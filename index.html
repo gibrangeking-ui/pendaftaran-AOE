@@ -153,20 +153,20 @@
         document.getElementById('regForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
-            // Ambil data dari form
+            
             const nama = document.getElementById('nama').value;
             const umur = document.getElementById('umur').value;
             const kota = document.getElementById('kota').value;
             const tiktok = document.getElementById('akun tiktok?').value;
             const alasan = document.getElementById('alasan masuk?? ').value;
 
-            // Nomor WhatsApp Admin (Ganti dengan nomor kamu, awali dengan 62)
+              
             const noWA = "62895365527405"; 
 
-            // Format Pesan
+            
             const pesan = `Halo Admin AOE! 🌌%0A%0ASaya ingin mendaftar ke komunitas AOE — Astronomy Of Everything.%0A%0A*Data Diri:*%0A- Nama: ${nama}%0A- Umur: ${umur} Tahun%0A- Asal: ${kota}%0A- TikTok: ${tiktok}%0A- Alasan: ${alasan}%0A%0ASalam Astronomi! 🚀`;
 
-            // Redirect ke WhatsApp
+            
             window.location.href = `https://wa.me/${62895365527405}?text=${pesan}`;
         });
     </script>
