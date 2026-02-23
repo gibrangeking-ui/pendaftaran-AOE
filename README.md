@@ -1,2 +1,0 @@
-# pendaftaran-AOE
-AOE

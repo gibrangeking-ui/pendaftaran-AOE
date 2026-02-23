@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join AOE — Astronomy Of Everything</title>
+    <style>
+        :root {
+            --space-black: #05050a;
+            --nebula-purple: #6a11cb;
+            --star-gold: #fbc2eb;
+            --glass: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: radial-gradient(circle at center, #1b2735 0%, #090a0f 100%);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Efek Animasi Bintang Bergerak */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: transparent url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/123163/stars.png') repeat;
+            animation: move-stars 100s linear infinite;
+        }
+
+        @keyframes move-stars {
+            from { background-position: 0 0; }
+            to { background-position: -10000px 5000px; }
+        }
+
+        /* Container Pendaftaran */
+        .container {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #a18cd1 0%, #fbc2eb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p { color: #ccc; font-size: 0.9rem; margin-bottom: 30px; }
+
+        .input-group {
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        label { font-size: 0.85rem; margin-left: 5px; color: #a18cd1; }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            color: white;
+            outline: none;
+            transition: 0.3s;
+            box-sizing: border-box;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #fbc2eb;
+            background: rgba(255,255,255,0.1);
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            margin-top: 20px;
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="stars"></div>
+
+    <div class="container">
+        <h1>🔭 AOE</h1>
+        <p>Astronomy Of Everything Registration</p>
+        
+        <form id="regForm">
+            <div class="input-group">
+                <label>Nama Lengkap</label>
+                <input type="text" id="nama" placeholder="Contoh: Galileo Galilei" required>
+            </div>
+            <div class="input-group">
+                <label>Umur</label>
+                <input type="number" id="umur" placeholder="Berapa usiamu?" required>
+            </div>
+            <div class="input-group">
+                <label>Asal Kota</label>
+                <input type="text" id="kota" placeholder="Kota tempat tinggalmu" required>
+            </div>
+            <div class="input-group">
+                <label>Link Akun TikTok</label>
+                <input type="url" id="tiktok" placeholder="https://tiktok.com/@username" required>
+            </div>
+            <div class="input-group">
+                <label>Alasan Join AOE</label>
+                <textarea id="alasan" rows="3" placeholder="Apa yang membuatmu tertarik?" required></textarea>
+            </div>
+            
+            <button type="submit">Luncurkan Pendaftaran! 🚀</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('regForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Ambil data dari form
+            const nama = document.getElementById('nama').value;
+            const umur = document.getElementById('umur').value;
+            const kota = document.getElementById('kota').value;
+            const tiktok = document.getElementById('akun tiktok?').value;
+            const alasan = document.getElementById('alasan masuk?? ').value;
+
+            // Nomor WhatsApp Admin (Ganti dengan nomor kamu, awali dengan 62)
+            const noWA = "62895365527405"; 
+
+            // Format Pesan
+            const pesan = `Halo Admin AOE! 🌌%0A%0ASaya ingin mendaftar ke komunitas AOE — Astronomy Of Everything.%0A%0A*Data Diri:*%0A- Nama: ${nama}%0A- Umur: ${umur} Tahun%0A- Asal: ${kota}%0A- TikTok: ${tiktok}%0A- Alasan: ${alasan}%0A%0ASalam Astronomi! 🚀`;
+
+            // Redirect ke WhatsApp
+            window.location.href = `https://wa.me/${noWA}?text=${pesan}`;
+        });
+    </script>
+</body>
+          </html>
