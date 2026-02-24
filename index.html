@@ -17,7 +17,6 @@
             overflow: hidden;
         }
 
-        /* Animasi Latar Belakang */
         .bg {
             position: fixed;
             width: 100%; height: 100%;
@@ -82,23 +81,20 @@
 
 <script>
     function kirimWA() {
-        // Ambil data dari input
         const nama = document.getElementById('nama').value;
         const umur = document.getElementById('umur').value;
         const kota = document.getElementById('kota').value;
         const tiktok = document.getElementById('tiktok').value;
         const alasan = document.getElementById('alasan').value;
 
-        // Validasi simpel agar tidak kosong
         if(nama === "" || umur === "" || kota === "") {
             alert("Mohon isi data yang penting dulu ya!");
             return;
         }
 
-        // GANTI NOMOR DI BAWAH INI (Wajib awali dengan 62)
-        const noAdmin = "6281346219587"; 
+        // ✅ NOMOR SUDAH DIGANTI
+        const noAdmin = "62895365527405"; 
 
-        // Buat Pesan
         const pesan = "PROFIL CALON ANGGOTA AOE\n" +
                       "--------------------------\n" +
                       "Nama: " + nama + "\n" +
@@ -109,10 +105,8 @@
                       "--------------------------\n" +
                       "Halo Admin, saya ingin gabung!";
 
-        // Gunakan wa.me yang paling standar
-        const link = "wa.me/6281346219587" + noAdmin + "?text=" + encodeURIComponent(pesan);
+        const link = "https://wa.me/" + noAdmin + "?text=" + encodeURIComponent(pesan);
         
-        // Perintah buka link
         window.location.href = link;
     }
 </script>
