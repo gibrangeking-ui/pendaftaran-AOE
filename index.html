@@ -5,18 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AOE — Astronomy Of Everything</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Space Grotesk', sans-serif;
-        }
-
         body {
-            background: #020205;
+            margin: 0;
+            background: #05050a;
             color: white;
+            font-family: 'Segoe UI', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -24,219 +17,105 @@
             overflow: hidden;
         }
 
-        /* Latar Belakang Luar Angkasa Animasi */
-        .stars-container {
+        /* Animasi Latar Belakang */
+        .bg {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
+            width: 100%; height: 100%;
             background: radial-gradient(circle at center, #1b2735 0%, #090a0f 100%);
+            z-index: -1;
         }
 
-        .star {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            opacity: 0.5;
-            animation: twinkle var(--duration) infinite ease-in-out;
-        }
-
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.2); }
-        }
-
-        /* Box Pendaftaran */
-        .card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .container {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(10px);
             padding: 30px;
-            border-radius: 24px;
-            width: 90%;
-            max-width: 450px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-            z-index: 10;
-            animation: fadeIn 1s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        h1 {
+            border-radius: 20px;
+            width: 350px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
-            font-size: 1.8rem;
-            margin-bottom: 5px;
-            background: linear-gradient(90deg, #fff, #a29bfe, #fff);
-            background-size: 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shimmer 3s infinite linear;
         }
 
-        @keyframes shimmer {
-            0% { background-position: -200%; }
-            100% { background-position: 200%; }
-        }
-
-        p.tagline {
-            text-align: center;
-            font-size: 0.75rem;
-            color: #a29bfe;
-            margin-bottom: 25px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        /* Form Styling */
-        .input-group {
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-            font-size: 0.8rem;
-            margin-bottom: 6px;
-            color: #ccc;
-        }
+        h2 { margin-bottom: 20px; color: #a29bfe; letter-spacing: 2px; }
 
         input, textarea {
             width: 100%;
             padding: 12px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
+            margin: 8px 0;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid #444;
+            border-radius: 8px;
             color: white;
-            outline: none;
-            transition: 0.3s;
+            display: block;
+            box-sizing: border-box;
         }
 
-        input:focus, textarea:focus {
-            border-color: #a29bfe;
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        /* Tombol Launch */
-        .btn {
+        button {
             width: 100%;
-            padding: 14px;
-            margin-top: 10px;
-            background: linear-gradient(45deg, #6c5ce7, #a29bfe);
-            border: none;
-            border-radius: 12px;
+            padding: 15px;
+            background: #6c5ce7;
             color: white;
+            border: none;
+            border-radius: 8px;
             font-weight: bold;
-            font-size: 1rem;
             cursor: pointer;
-            transition: 0.3s;
+            margin-top: 15px;
+            font-size: 1rem;
         }
 
-        .btn:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 20px rgba(108, 92, 231, 0.5);
-        }
-
-        .footer {
-            text-align: center;
-            font-size: 0.7rem;
-            margin-top: 20px;
-            color: #555;
-        }
+        button:hover { background: #5849c4; }
     </style>
 </head>
 <body>
 
-    <div class="stars-container" id="stars"></div>
+<div class="bg"></div>
 
-    <div class="card">
-        <h1>🔭 AOE</h1>
-        <p class="tagline">Astronomy Of Everything</p>
+<div class="container">
+    <h2>🔭 AOE JOIN</h2>
+    <input type="text" id="nama" placeholder="Nama Lengkap">
+    <input type="number" id="umur" placeholder="Umur">
+    <input type="text" id="kota" placeholder="Asal Kota">
+    <input type="text" id="tiktok" placeholder="Link TikTok">
+    <textarea id="alasan" placeholder="Alasan Join AOE" rows="3"></textarea>
+    
+    <button type="button" onclick="kirimWA()">Kirim ke WhatsApp 🚀</button>
+</div>
 
-        <form id="regForm">
-            <div class="input-group">
-                <label>Nama Lengkap</label>
-                <input type="text" id="nama" placeholder="Siapa namamu?" required>
-            </div>
-            
-            <div style="display: flex; gap: 10px;">
-                <div class="input-group" style="flex: 1;">
-                    <label>Umur</label>
-                    <input type="number" id="umur" placeholder="Usia" required>
-                </div>
-                <div class="input-group" style="flex: 2;">
-                    <label>Asal Kota</label>
-                    <input type="text" id="kota" placeholder="Domisili" required>
-                </div>
-            </div>
+<script>
+    function kirimWA() {
+        // Ambil data dari input
+        const nama = document.getElementById('nama').value;
+        const umur = document.getElementById('umur').value;
+        const kota = document.getElementById('kota').value;
+        const tiktok = document.getElementById('tiktok').value;
+        const alasan = document.getElementById('alasan').value;
 
-            <div class="input-group">
-                <label>Link Akun TikTok</label>
-                <input type="url" id="tiktok" placeholder="https://tiktok.com/@..." required>
-            </div>
-
-            <div class="input-group">
-                <label>Alasan Join AOE</label>
-                <textarea id="alasan" rows="3" placeholder="Apa ketertarikanmu?" required></textarea>
-            </div>
-
-            <button type="submit" class="btn">KIRIM INTRO KE WHATSAPP 🚀</button>
-        </form>
-
-        <div class="footer">
-            &copy; 2026 AOE Community™
-        </div>
-    </div>
-
-    <script>
-        // Membuat bintang secara otomatis
-        const container = document.getElementById('stars');
-        for (let i = 0; i < 150; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            const size = Math.random() * 3 + 'px';
-            star.style.width = size;
-            star.style.height = size;
-            star.style.top = Math.random() * 100 + '%';
-            star.style.left = Math.random() * 100 + '%';
-            star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
-            container.appendChild(star);
+        // Validasi simpel agar tidak kosong
+        if(nama === "" || umur === "" || kota === "") {
+            alert("Mohon isi data yang penting dulu ya!");
+            return;
         }
 
-        // Fungsi Kirim WhatsApp
-        document.getElementById('regForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        // GANTI NOMOR DI BAWAH INI (Wajib awali dengan 62)
+        const noAdmin = "6281346219587"; 
 
-            // Ambil data
-            const nama = document.getElementById('nama').value;
-            const umur = document.getElementById('umur').value;
-            const kota = document.getElementById('kota').value;
-            const tiktok = document.getElementById('tiktok').value;
-            const alasan = document.getElementById('alasan').value;
+        // Buat Pesan
+        const pesan = "PROFIL CALON ANGGOTA AOE\n" +
+                      "--------------------------\n" +
+                      "Nama: " + nama + "\n" +
+                      "Umur: " + umur + " Tahun\n" +
+                      "Kota: " + kota + "\n" +
+                      "TikTok: " + tiktok + "\n" +
+                      "Alasan: " + alasan + "\n" +
+                      "--------------------------\n" +
+                      "Halo Admin, saya ingin gabung!";
 
-            // PENGATURAN: Ganti nomor di bawah ini dengan nomor tujuan (admin/kamu)
-            const noWA = "6281346219587"; 
+        // Gunakan wa.me yang paling standar
+        const link = "wa.me/6281346219587" + noAdmin + "?text=" + encodeURIComponent(pesan);
+        
+        // Perintah buka link
+        window.location.href = link;
+    }
+</script>
 
-            // Format Pesan Perkenalan
-            const introText = `*INTRO ANGGOTA BARU AOE* 🌌\n` +
-                              `----------------------------------\n` +
-                              `🔭 *Nama:* ${nama}\n` +
-                              `🎂 *Umur:* ${umur} Tahun\n` +
-                              `📍 *Asal:* ${kota}\n` +
-                              `📱 *TikTok:* ${tiktok}\n` +
-                              `✨ *Alasan Join:* ${alasan}\n` +
-                              `----------------------------------\n` +
-                              `Halo Admin! Saya ingin bergabung dengan AOE! 🚀`;
-
-            // Membuat Link
-            const whatsappUrl = https://chat.whatsapp.com/IQy0NgIbrk82zyeXZzZUdN?mode=hqrt2=${6281346219587}&text=${encodeURIComponent(introText)}`;
-
-            // Langsung buka WhatsApp
-            window.location.href = whatsappUrl;
-        });
-    </script>
 </body>
-        </html>
+</html>
